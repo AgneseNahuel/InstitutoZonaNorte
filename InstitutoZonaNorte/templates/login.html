@@ -1,0 +1,18 @@
+{% extends "layout.html" %} {% load static %}
+
+{% block nombre %}
+LOGIN
+{% endblock %}
+
+{% block content %}
+
+<form class="form" method="post">
+
+    {% csrf_token %}
+    <p>{{ form.as_p }}</p>
+
+    <button type="submit" id="submit">LOGIN</button>
+
+</form>
+
+{% endblock %}

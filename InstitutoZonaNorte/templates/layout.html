@@ -1,0 +1,64 @@
+{% csrf_token %} {% load static %} 
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+        {% block nombre %}
+        {% endblock %}
+
+    </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="{% static 'normalize.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+
+
+	<header class="main-head">
+		<nav class="main">
+			<a href="{% url 'inicio' %}"><h1 id="logo">InstitutoZonaNorte</h1></a>
+			<ul>
+				<li><a href="{% url 'logout' %}">Logout</a></li>
+				<li><a href="{% url 'register' %}">Register</a></li>
+				<li><a href="{% url 'login' %}">Login</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<!-------------------------------------
+					Messages 
+	-------------------------------------->
+
+	<!-------------------------------------
+					Navigation Bar 
+	-------------------------------------->
+	<div class="main">
+		
+		<nav class="second-nav">
+			<a class="feed" href="{% url 'inicio' %}">Inicio</a>
+			<a class="profile" href="{% url 'profile' %}">Mi Perfil</a>
+			<a class="new" href="{% url 'feed' %}">Crear nuevo post</a>
+		</nav>
+
+        {% block content %}
+        {% endblock %}
+    
+    {% if messages %}
+        {% for message in messages %}
+        <div class="notification {{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
+
+	</div>
+
+	<footer>
+		<div class="row">
+			<p>IZNORTE</p>
+		</div>
+	</footer>
+
+</body>
+</html>
