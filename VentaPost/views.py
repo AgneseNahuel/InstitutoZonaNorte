@@ -10,7 +10,6 @@ from django.contrib.auth.models import User
 @login_required
 def feed(request):
     posts = Post.objects.all()
-
     context = {'posts': posts}
     return render(request, 'feed.html', context)
 
